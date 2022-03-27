@@ -3,10 +3,11 @@ var initModels=require('../models/init-models');
 var models=initModels(db)
 
 module.exports={
-    register:async(data)=>{
+    register_traveler:async(data)=>{
         try{
             await db.authenticate()
             await models.customer.create(data)
+            await models.Authentication.create(data)
             
             return {
                 response: true
@@ -20,14 +21,35 @@ module.exports={
         }
         
     },
+    register_agency: async (data) => {
+        try {
+            await db.authenticate()
+            await models.Travel_Agency.create(data)
+            await models.Authentication.create(data)
+            return {
+                response: true
+            }
+
+        } catch (error) {
+            return {
+                response: false,
+                error: error.message
+            }
+        }
+
+    },
+
+
+
+
     login:async(data)=>{
         try{
             await db.authenticate()
-            var result=await models.customer.findOne({where:{email:data.email,password:data.password}})
+            var result=await models.Authentication.findOne({where:{email:data.email,password:data.password}})
             if(result!=undefined){
                 return {
                     response: true, 
-                    data:result.type
+                    data:result
                 }
             }else{
                 return {

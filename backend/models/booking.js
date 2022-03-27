@@ -26,6 +26,14 @@ module.exports = function(sequelize, DataTypes) {
     seats: {
       type: DataTypes.INTEGER,
       allowNull: true
+    },
+    date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false
+    },
+    Amount: {
+      type: DataTypes.INTEGER,
+      allowNull: true
     }
   }, {
     sequelize,

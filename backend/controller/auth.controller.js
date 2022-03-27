@@ -6,13 +6,13 @@ const httpStatus = require('http-status')
 
 module.exports={
 
-    register:async(req,res)=>{
+    register_traveler:async(req,res)=>{
         var data=req.body
         
-        var result=await services.register(data)
+        var result=await services.register_traveler(data)
         if(result.response){
             res.status(httpStatus.OK).json({
-                "message":"user created"
+                "message":"Traveler created"
             })
         }else{
             res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
@@ -21,13 +21,33 @@ module.exports={
         }
 
     },
+    register_agency: async (req, res) => {
+        var data = req.body
+
+        var result = await services.register_agency(data)
+        if (result.response) {
+            res.status(httpStatus.OK).json({
+                "message": "Agency created"
+            })
+        } else {
+            res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
+                "message": result.error
+            })
+        }
+
+    },
+
+
+
     login:async(req,res)=>{
         var data=req.body
 
         var result=await services.login(data)
         if(result.response){
-            console.log(result.data)
+            console.log(result)
+            console.log("Logged in"),
             res.status(httpStatus.OK).json({
+                
                 "message":"user logged-in",
                 data:result.data
             })

@@ -31,20 +31,16 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    bus_category: {
-      type: DataTypes.TEXT,
-      allowNull: true
-    },
     description: {
       type: DataTypes.TEXT,
       allowNull: true
     },
-    cust_id: {
+    travelagency_pkey: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'customer',
-        key: 'cust_id'
+        model: 'Travel_Agency',
+        key: 'agency_id'
       }
     }
   }, {
@@ -53,12 +49,6 @@ module.exports = function(sequelize, DataTypes) {
     schema: 'tour',
     timestamps: false,
     indexes: [
-      {
-        name: "fki_cust_id",
-        fields: [
-          { name: "cust_id" },
-        ]
-      },
       {
         name: "trips_pkey",
         unique: true,

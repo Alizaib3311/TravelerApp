@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('customer', {
-    cust_id: {
+  return sequelize.define('Travel_Agency', {
+    agency_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -15,15 +15,23 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TEXT,
       allowNull: true
     },
-    password: {
-      type: DataTypes.TEXT,
-      allowNull: true
-    },
     city: {
       type: DataTypes.TEXT,
       allowNull: true
     },
     phone: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    password: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    cnic: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    registration: {
       type: DataTypes.TEXT,
       allowNull: true
     },
@@ -37,15 +45,15 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-    tableName: 'customer',
+    tableName: 'Travel_Agency',
     schema: 'tour',
     timestamps: false,
     indexes: [
       {
-        name: "customer_pkey",
+        name: "Travel_Agency_pkey",
         unique: true,
         fields: [
-          { name: "cust_id" },
+          { name: "agency_id" },
         ]
       },
     ]
