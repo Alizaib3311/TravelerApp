@@ -4,9 +4,13 @@ import 'package:frontend/User.dart';
 //import 'package:getwidget/getwidget.dart';
 import 'package:http/http.dart' as http;
 
+import 'login1.dart';
+
 Future<UserModel?> createUser(String name, String email, String password,
     String type, String city, String phone, String cnic) async {
-  final Uri apiUrl = Uri.parse("http://192.168.100.47:3000/v1/auth/register");
+  final Uri apiUrl =
+      //Uri.parse("http://192.168.100.47:3000/v1/auth/registerAgency");
+      Uri.parse("https://tourcotics.herokuapp.com/v1/auth/registerAgency");
 
   final response = await http.post(apiUrl, body: {
     "name": name,
@@ -68,7 +72,7 @@ class _HomePageState extends State<HomePage> {
   String _phone = '';
 
   // This function is triggered when the user press the "Sign Up" button
-  void _trySubmitForm() {
+  bool _trySubmitForm() {
     final isValid = _formKey.currentState!.validate();
     if (isValid) {
       print(_userEmail);
@@ -84,6 +88,8 @@ class _HomePageState extends State<HomePage> {
       for processing data in database or api calling 
       */
     }
+
+    return isValid;
   }
 
   @override
@@ -292,7 +298,6 @@ class _HomePageState extends State<HomePage> {
                                     BorderRadius.all(Radius.circular(10))),
                           ),
                           onPressed: () async {
-                            _trySubmitForm();
                             final String name = nameController.text;
                             final String email = emailController.text;
                             final String phone = phoneController.text;
@@ -306,6 +311,15 @@ class _HomePageState extends State<HomePage> {
                             setState(() {
                               User = user;
                             });
+
+                            if (!_trySubmitForm()) {
+                            } else {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const MyLogin1()),
+                              );
+                            }
                           }),
                     ),
                   ],

@@ -1,2 +1,0 @@
-sequelize-auto -h 127.0.0.1 -d postgres -u postgres -x 3311 -p 5432  --dialect postgres -c "./config/config.js" -o "./models" -t booking customer trips Travel_Agency Authentication
-

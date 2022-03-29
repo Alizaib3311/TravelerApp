@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/Signup_Traveler.dart';
 import 'package:frontend/login1.dart';
 import 'package:frontend/Signup_agency.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'Signup_agency.dart';
 
 class MyLogin extends StatefulWidget {
@@ -12,6 +13,23 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyLoginState extends State<MyLogin> {
+//  late SharedPreferences sharedPreferences;
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   checkLoginStatus();
+  // }
+
+  // checkLoginStatus() async {
+  //   sharedPreferences = await SharedPreferences.getInstance();
+  //   if (sharedPreferences.getString("token") == null) {
+  //     Navigator.of(context).pushAndRemoveUntil(
+  //         MaterialPageRoute(builder: (BuildContext context) => MyLogin1()),
+  //         (Route<dynamic> route) => false);
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Container(
